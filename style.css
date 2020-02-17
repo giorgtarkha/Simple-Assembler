@@ -1,0 +1,16 @@
+#code-wrapper {
+    text-align: center;
+}
+
+#code {
+    width: 40em;
+    height: 40em;
+}
+
+#button-wrapper {
+    text-align: center;
+}
+
+#run-button {
+    margin-top: 10px;
+}
