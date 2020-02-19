@@ -90,7 +90,7 @@ parse_instruction = function(instruction, function_definitions, line, definition
         if (function_definitions[instruction[2]] != undefined) {
             return create_result(undefined, "function definition with name " + instruction[2] + " at line " + line + " already exists");
         }
-        function_definitions[instruction[2]] = line * 4;
+        function_definitions[instruction[2]] = (line - 1) * 4;
     } else if (instruction[0] === "CALL") {
         if (instruction.length != 4 || instruction[1] != '<' || instruction[3] != '>') {
             return create_result(undefined, "instruction must have syntax 'CALL <function_name>' at line " + line);
@@ -130,12 +130,12 @@ parse_instruction = function(instruction, function_definitions, line, definition
                 }
             }
         }
-    } else if (is_branch_instruction(instruction[0])) {
+    } else if (is_comparison_instruction(instruction[0])) {
         if (instruction.length != 4 && instruction.length != 6) {
             return wrong_instruction(line);
         }
         if (!(is_number(instruction[1]) || is_memory(instruction[1]) || is_register(instruction[1])) ||
-            !(is_number(instruction[2]) || is_memory(instruciton[2]) || is_register(instruction[2]))) {
+            !(is_number(instruction[2]) || is_memory(instruction[2]) || is_register(instruction[2]))) {
             return create_result(undefined, "registers or constants must be in comparison instructions at line " + line);
         }
 
@@ -189,10 +189,9 @@ parse_instruction = function(instruction, function_definitions, line, definition
         }
     } else if (is_number(instruction[0])) {
         return create_result(undefined, "number can't be an instruction at line " + line);
+    } else{
+        return create_result(undefined, "unknown instruction " + instruction[0] + " at line " + line);
     }
-
-
-    //return wrong_instruction();
 
     return create_result(instruction, "");
 }
