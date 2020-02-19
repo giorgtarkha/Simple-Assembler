@@ -47,7 +47,6 @@ emulate = function(instructions, function_definitions) {
     let number_of_instructions_processed = 0;
 
     while (true) {
-        console.log(registers + " " + return_value);
         if (number_of_instructions_processed > 100000) {
             console.log("limit of how many instructions can be processed is 100000 so the program must terminate.");
             break;
