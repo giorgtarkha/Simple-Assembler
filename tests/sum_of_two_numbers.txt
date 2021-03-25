@@ -1,0 +1,16 @@
+DEFINE<MAIN>
+SP = SP - 4
+R1 = SP
+SP = SP - 4
+R2 = SP
+M[R1] = 5
+M[R2] = 4
+CALL<SUM>
+RET
+DEFINE<SUM>
+R1 = SP 
+R2 = SP + 4
+R3 = M[R1]
+RV = R3 + M[R2]
+SP = SP + 8
+RET
