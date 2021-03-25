@@ -11,13 +11,14 @@ Machine parameters:
 # Usage
 Function definition - DEFINE&lt;function_name&gt;<br>
 Entry point - DEFINE&lt;MAIN&gt;<br>
-Calling function - CALL&lt;function_name&gt;<br>
+Calling function - CALL&lt;function_name&gt; or CALL&lt;function_def_instruction_number&gt;<br>
 Return from function - RET (every function should return)
 ```
-DEFINE<FUNC>
-RET
 DEFINE<MAIN>
 CALL<FUNC>
+CALL<16>
+RET
+DEFINE<FUNC> --> 4th line, starting from 0, each line is 4 bytes, CALL<FUNC> same as CALL<16>
 RET
 ```
 Return value - RV <br>
